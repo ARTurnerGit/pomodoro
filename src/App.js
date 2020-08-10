@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { Router } from "@reach/router";
 import Banner from "./components/Banner";
-import Navbar from "./components/Navbar";
 import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 
@@ -13,9 +12,6 @@ function App() {
       <header>
         <Banner />
       </header>
-      <nav>
-        <Navbar />
-      </nav>
       <main>
         <Router>
           <Timer path="/timer" default />
