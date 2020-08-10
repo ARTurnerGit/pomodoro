@@ -1,22 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container } from "@material-ui/core";
 
 const Timer = () => {
-  const [timeRemaining, setTimeRemaining] = useState(25 * 60);
+  const [timeRemaining, setTimeRemaining] = useState(5);
   const intervalID = useRef(null);
 
-  const timerFunction = () => {
-    if (timeRemaining > 1) {
-      setTimeRemaining(() => timeRemaining - 1);
-    } else {
+  useEffect(() => {
+    if (timeRemaining === 0) {
       stopTimer();
     }
-  };
+  }, [timeRemaining]);
 
   const startTimer = () => {
-    intervalID.current = setInterval(timerFunction, 1000);
+    intervalID.current = setInterval(
+      () => setTimeRemaining((time) => time - 1),
+      1000
+    );
   };
 
   const stopTimer = () => {
@@ -26,13 +27,17 @@ const Timer = () => {
 
   const resetTimer = () => {
     stopTimer();
-    setTimeRemaining(25 * 60);
+    setTimeRemaining(5);
   };
 
   return (
     <Container style={{ position: "absolute", top: "40vh" }}>
       <TimerDisplay timeRemaining={timeRemaining} />
-      <TimerControl startTimer={startTimer} stopTimer={stopTimer} />
+      <TimerControl
+        startTimer={startTimer}
+        stopTimer={stopTimer}
+        resetTimer={resetTimer}
+      />
     </Container>
   );
 };
