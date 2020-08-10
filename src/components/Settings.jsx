@@ -5,7 +5,9 @@ import { Container } from "@material-ui/core";
 
 const Settings = () => {
   return (
-    <Container>
+    <Container
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <WorkSettings />
       <BreakSettings />
     </Container>

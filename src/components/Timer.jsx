@@ -5,7 +5,7 @@ import { Container } from "@material-ui/core";
 
 const Timer = () => {
   return (
-    <Container>
+    <Container style={{ position: "absolute", top: "40vh" }}>
       <TimerDisplay />
       <TimerControl />
     </Container>

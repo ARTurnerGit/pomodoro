@@ -3,7 +3,7 @@ import { Paper, Slider, TextField } from "@material-ui/core";
 
 const BreakSettings = () => {
   return (
-    <Paper>
+    <Paper style={{ width: "40%", margin: "4vh 0" }}>
       Short Break Duration
       <Slider />
       Long Break Duration

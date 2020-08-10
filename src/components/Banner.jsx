@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <AppBar style={{ position: "static" }}>
       <Toolbar>
-        This is the Banner ---> Logo, these nav elements -->
+        <em>logo goes here</em>
         <Navbar />
         And then a login button (later on)
       </Toolbar>
