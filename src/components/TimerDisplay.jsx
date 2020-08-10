@@ -1,10 +1,10 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 
-const TimerDisplay = () => {
+const TimerDisplay = ({ timeRemaining }) => {
   return (
     <Typography variant="body1" style={{ fontSize: "50px" }}>
-      5
+      {timeRemaining}
     </Typography>
   );
 };
