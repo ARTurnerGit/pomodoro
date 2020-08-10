@@ -8,7 +8,6 @@ import Settings from "./components/Settings";
 function App() {
   return (
     <div className="App">
-      LET'S MAKE A POMODORO
       <header>
         <Banner />
       </header>

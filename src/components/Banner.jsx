@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Banner = () => {
   return (
-    <AppBar>
+    <AppBar style={{ position: "static" }}>
       <Toolbar>
         This is the Banner ---> Logo, these nav elements -->
         <Navbar />
