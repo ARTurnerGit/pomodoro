@@ -6,7 +6,6 @@ import { Container } from "@material-ui/core";
 const Timer = () => {
   return (
     <Container>
-      Hi there I'm the Timer and I'm going to render...
       <TimerDisplay />
       <TimerControl />
     </Container>
