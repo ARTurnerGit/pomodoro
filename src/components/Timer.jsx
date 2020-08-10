@@ -8,6 +8,10 @@ const Timer = () => {
   const intervalID = useRef(null);
 
   useEffect(() => {
+    document.title = `${timeRemaining} to go`;
+  }, [timeRemaining]);
+
+  useEffect(() => {
     if (timeRemaining === 0) {
       stopTimer();
     }
