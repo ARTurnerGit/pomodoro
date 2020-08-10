@@ -1,11 +1,12 @@
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 
-const TimerControl = () => {
+const TimerControl = ({ startTimer, stopTimer }) => {
   return (
     <Container>
       <Button>RESET</Button>
-      <Button>PLAY/PAUSE</Button>
+      <Button onClick={startTimer}>PLAY</Button>
+      <Button onClick={stopTimer}>PAUSE</Button>
       <Button>SKIP</Button>
     </Container>
   );
