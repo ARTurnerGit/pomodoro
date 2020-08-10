@@ -4,11 +4,14 @@ import Navbar from "./Navbar";
 
 const Banner = () => {
   return (
-    <AppBar style={{ position: "static" }}>
-      <Toolbar>
+    <AppBar
+      style={{
+        position: "static",
+      }}
+    >
+      <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <em>logo goes here</em>
         <Navbar />
-        And then a login button (later on)
       </Toolbar>
     </AppBar>
   );
