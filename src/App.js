@@ -16,6 +16,7 @@ function App() {
 
   // state for functional logic
   const [timeRemaining, setTimeRemaining] = useState(workDuration);
+  const [intervalID, setIntervalID] = useState(null);
   const [currentRound, setCurrentRound] = useState(0);
 
   return (
@@ -37,6 +38,8 @@ function App() {
             setCurrentRound={setCurrentRound}
             timeRemaining={timeRemaining}
             setTimeRemaining={setTimeRemaining}
+            intervalID={intervalID}
+            setIntervalID={setIntervalID}
             default
           />
           <Settings
