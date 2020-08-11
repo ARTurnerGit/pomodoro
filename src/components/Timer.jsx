@@ -34,12 +34,20 @@ const Timer = ({
 
   const resetTimer = () => {
     stopTimer();
-    setTimeRemaining(5); // this needs to change to workDuration, 5s for testing
+    setTimeRemaining(isWork ? workDuration : shortBreakDuration);
   };
 
   const nextRound = () => {
-    resetTimer();
-    setCurrentRound((round) => round + 1);
+    stopTimer();
+
+    if (isWork) {
+      setTimeRemaining(shortBreakDuration);
+    } else {
+      setCurrentRound((round) => round + 1);
+      setTimeRemaining(workDuration);
+    }
+
+    setIsWork((bool) => !bool);
   };
 
   useEffect(() => {
@@ -54,6 +62,10 @@ const Timer = ({
         timeRemaining={timeRemaining}
         currentRound={currentRound}
         rounds={rounds}
+        isWork={isWork}
+        workMessage={workMessage}
+        breakMessage={breakMessage}
+        intervalID={intervalID}
       />
       <TimerControl
         startTimer={startTimer}

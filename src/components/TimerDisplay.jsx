@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
 import { Typography } from "@material-ui/core";
 
-const TimerDisplay = ({ timeRemaining, currentRound, rounds }) => {
+const TimerDisplay = ({
+  timeRemaining,
+  currentRound,
+  rounds,
+  isWork,
+  workMessage,
+  breakMessage,
+  intervalID,
+}) => {
   const displayTime =
     timeRemaining >= 60
       ? Math.floor(timeRemaining / 60).toString()
@@ -18,10 +26,13 @@ const TimerDisplay = ({ timeRemaining, currentRound, rounds }) => {
   return (
     <>
       <Typography variant="body1" style={{ fontSize: "50px" }}>
-        {displayTime}
+        {!intervalID && displayTime}
       </Typography>
       <Typography>
         Round {currentRound} of {rounds}
+      </Typography>
+      <Typography>
+        {intervalID && (isWork ? workMessage : breakMessage)}
       </Typography>
     </>
   );
