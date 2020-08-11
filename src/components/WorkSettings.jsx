@@ -1,7 +1,14 @@
 import React from "react";
 import { Paper, Slider, TextField } from "@material-ui/core";
 
-const WorkSettings = ({ workDuration, setWorkDuration, rounds, setRounds }) => {
+const WorkSettings = ({
+  workDuration,
+  setWorkDuration,
+  rounds,
+  setRounds,
+  workMessage,
+  setWorkMessage,
+}) => {
   const workDurationMarks = [
     { value: 15, label: "15 mins" },
     { value: 25, label: "25 mins" },
@@ -35,8 +42,14 @@ const WorkSettings = ({ workDuration, setWorkDuration, rounds, setRounds }) => {
         valueLabelDisplay="on"
         onChange={(event, value) => setRounds(value)}
       />
-      Work Message
-      <TextField />
+      <TextField
+        variant="outlined"
+        label="Work Message"
+        value={workMessage}
+        onChange={(e) => {
+          setWorkMessage(e.target.value);
+        }}
+      />
     </Paper>
   );
 };

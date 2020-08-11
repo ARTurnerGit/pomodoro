@@ -12,6 +12,10 @@ const Settings = ({
   setShortBreakDuration,
   longBreakDuration,
   setLongBreakDuration,
+  workMessage,
+  setWorkMessage,
+  breakMessage,
+  setBreakMessage,
 }) => {
   return (
     <Container
@@ -22,12 +26,16 @@ const Settings = ({
         setWorkDuration={setWorkDuration}
         rounds={rounds}
         setRounds={setRounds}
+        workMessage={workMessage}
+        setWorkMessage={setWorkMessage}
       />
       <BreakSettings
         shortBreakDuration={shortBreakDuration}
         setShortBreakDuration={setShortBreakDuration}
         longBreakDuration={longBreakDuration}
         setLongBreakDuration={setLongBreakDuration}
+        breakMessage={breakMessage}
+        setBreakMessage={setBreakMessage}
       />
     </Container>
   );

@@ -6,6 +6,8 @@ const BreakSettings = ({
   setShortBreakDuration,
   longBreakDuration,
   setLongBreakDuration,
+  breakMessage,
+  setBreakMessage,
 }) => {
   const shortBreakMarks = [
     { value: 5, label: "5 mins" },
@@ -46,8 +48,14 @@ const BreakSettings = ({
           setLongBreakDuration(value * 60);
         }}
       />
-      Break Message
-      <TextField />
+      <TextField
+        variant="outlined"
+        label="Break Message"
+        value={breakMessage}
+        onChange={(e) => {
+          setBreakMessage(e.target.value);
+        }}
+      />
     </Paper>
   );
 };

@@ -10,6 +10,8 @@ function App() {
   const [rounds, setRounds] = useState(5);
   const [shortBreakDuration, setShortBreakDuration] = useState(5 * 60);
   const [longBreakDuration, setLongBreakDuration] = useState(20 * 60);
+  const [workMessage, setWorkMessage] = useState("Work");
+  const [breakMessage, setBreakMessage] = useState("Break");
 
   return (
     <div className="App">
@@ -29,6 +31,10 @@ function App() {
             setShortBreakDuration={setShortBreakDuration}
             longBreakDuration={longBreakDuration}
             setLongBreakDuration={setLongBreakDuration}
+            workMessage={workMessage}
+            setWorkMessage={setWorkMessage}
+            breakMessage={breakMessage}
+            setBreakMessage={setBreakMessage}
           />
         </Router>
       </main>
