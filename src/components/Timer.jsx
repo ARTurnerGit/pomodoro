@@ -39,6 +39,11 @@ const Timer = ({
     setTimeRemaining(5); // this needs to change to workDuration, 5s for testing
   };
 
+  const nextRound = () => {
+    resetTimer();
+    setCurrentRound((round) => round + 1);
+  };
+
   return (
     <Container style={{ position: "absolute", top: "40vh" }}>
       <TimerDisplay
@@ -50,6 +55,7 @@ const Timer = ({
         startTimer={startTimer}
         stopTimer={stopTimer}
         resetTimer={resetTimer}
+        nextRound={nextRound}
       />
     </Container>
   );
