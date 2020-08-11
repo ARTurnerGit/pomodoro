@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container } from "@material-ui/core";
@@ -15,25 +15,19 @@ const Timer = ({
   timeRemaining,
   setTimeRemaining,
 }) => {
-  // const [timeRemaining, setTimeRemaining] = useState(workDuration);
-  const intervalID = useRef(null);
-
-  useEffect(() => {
-    if (timeRemaining === 0) {
-      stopTimer();
-    }
-  }, [timeRemaining]);
+  const [intervalID, setIntervalID] = useState(null);
 
   const startTimer = () => {
-    intervalID.current = setInterval(
+    const currentIntervalID = setInterval(
       () => setTimeRemaining((time) => time - 1),
       1000
     );
+    setIntervalID(currentIntervalID);
   };
 
   const stopTimer = () => {
-    clearInterval(intervalID.current);
-    intervalID.current = null;
+    clearInterval(intervalID);
+    setIntervalID(null);
   };
 
   const resetTimer = () => {
@@ -45,6 +39,12 @@ const Timer = ({
     resetTimer();
     setCurrentRound((round) => round + 1);
   };
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      stopTimer();
+    }
+  });
 
   return (
     <Container style={{ position: "absolute", top: "40vh" }}>
