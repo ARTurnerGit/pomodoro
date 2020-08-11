@@ -12,11 +12,12 @@ const WorkSettings = ({ workDuration, setWorkDuration, rounds, setRounds }) => {
     { value: 5, label: "5" },
     { value: 15, label: "15" },
   ];
+
   return (
     <Paper style={{ width: "40%", margin: "4vh 0" }}>
       Work Duration
       <Slider
-        defaultValue={`${workDuration / 60}`}
+        value={workDuration / 60}
         marks={workDurationMarks}
         min={15}
         max={60}
@@ -26,7 +27,7 @@ const WorkSettings = ({ workDuration, setWorkDuration, rounds, setRounds }) => {
       />
       Rounds
       <Slider
-        defaultValue={`${rounds}`}
+        value={rounds}
         marks={roundMarks}
         min={1}
         max={15}

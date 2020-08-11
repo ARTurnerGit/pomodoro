@@ -1,7 +1,12 @@
 import React from "react";
 import { Paper, Slider, TextField } from "@material-ui/core";
 
-const BreakSettings = () => {
+const BreakSettings = ({
+  shortBreakDuration,
+  setShortBreakDuration,
+  longBreakDuration,
+  setLongBreakDuration,
+}) => {
   const shortBreakMarks = [
     { value: 5, label: "5 mins" },
     { value: 10, label: "10 mins" },
@@ -14,25 +19,32 @@ const BreakSettings = () => {
     { value: 40, label: "40 mins" },
     { value: 60, label: "1 hour" },
   ];
+
   return (
     <Paper style={{ width: "40%", margin: "4vh 0" }}>
       Short Break Duration
       <Slider
-        defaultValue="5"
+        value={shortBreakDuration / 60}
         marks={shortBreakMarks}
         min={5}
         max={30}
         step={1}
         valueLabelDisplay="on"
+        onChange={(event, value) => {
+          setShortBreakDuration(value * 60);
+        }}
       />
       Long Break Duration
       <Slider
-        defaultValue="20"
+        value={longBreakDuration / 60}
         marks={longBreakMarks}
         min={10}
         max={60}
         step={1}
         valueLabelDisplay="on"
+        onChange={(event, value) => {
+          setLongBreakDuration(value * 60);
+        }}
       />
       Break Message
       <TextField />
