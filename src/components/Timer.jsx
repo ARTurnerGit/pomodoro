@@ -34,7 +34,7 @@ const Timer = ({
 
   const resetTimer = () => {
     stopTimer();
-    setTimeRemaining(5);
+    setTimeRemaining(5); // this needs to change to workDuration, 5s for testing
   };
 
   return (
