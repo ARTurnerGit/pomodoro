@@ -39,14 +39,12 @@ const Timer = ({
 
   const nextRound = () => {
     stopTimer();
-
     if (isWork) {
       setTimeRemaining(shortBreakDuration);
     } else {
       setCurrentRound((round) => round + 1);
       setTimeRemaining(workDuration);
     }
-
     setIsWork((bool) => !bool);
   };
 
