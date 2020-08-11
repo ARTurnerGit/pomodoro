@@ -72,6 +72,7 @@ const Timer = ({
         stopTimer={stopTimer}
         resetTimer={resetTimer}
         nextRound={nextRound}
+        intervalID={intervalID}
       />
     </Container>
   );
