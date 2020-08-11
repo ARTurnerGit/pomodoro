@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Paper, Slider, TextField } from "@material-ui/core";
 
-const WorkSettings = () => {
-  const [workDuration, setWorkDuration] = useState(25 * 60);
+const WorkSettings = ({ workDuration, setWorkDuration, rounds, setRounds }) => {
   const workDurationMarks = [
     { value: 15, label: "15 mins" },
     { value: 25, label: "25 mins" },
@@ -17,21 +16,23 @@ const WorkSettings = () => {
     <Paper style={{ width: "40%", margin: "4vh 0" }}>
       Work Duration
       <Slider
-        defaultValue="25"
+        defaultValue={`${workDuration / 60}`}
         marks={workDurationMarks}
         min={15}
         max={60}
         step={5}
         valueLabelDisplay="on"
+        onChange={(event, value) => setWorkDuration(value * 60)}
       />
       Rounds
       <Slider
-        defaultValue="5"
+        defaultValue={`${rounds}`}
         marks={roundMarks}
         min={1}
         max={15}
         step={1}
         valueLabelDisplay="on"
+        onChange={(event, value) => setRounds(value)}
       />
       Work Message
       <TextField />
