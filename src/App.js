@@ -12,6 +12,7 @@ function App() {
   const [longBreakDuration, setLongBreakDuration] = useState(20 * 60);
   const [workMessage, setWorkMessage] = useState("Work");
   const [breakMessage, setBreakMessage] = useState("Break");
+  const [currentRound, setCurrentRound] = useState(0);
 
   return (
     <div className="App">
@@ -28,6 +29,8 @@ function App() {
             longBreakDuration={longBreakDuration}
             workMessage={workMessage}
             breakMessage={breakMessage}
+            currentRound={currentRound}
+            setCurrentRound={setCurrentRound}
             default
           />
           <Settings

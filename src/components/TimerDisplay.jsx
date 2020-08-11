@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Typography } from "@material-ui/core";
 
-const TimerDisplay = ({ timeRemaining }) => {
+const TimerDisplay = ({ timeRemaining, currentRound, rounds }) => {
   const displayTime =
     timeRemaining >= 60
       ? Math.floor(timeRemaining / 60).toString()
@@ -16,9 +16,14 @@ const TimerDisplay = ({ timeRemaining }) => {
   }, [displayTime]);
 
   return (
-    <Typography variant="body1" style={{ fontSize: "50px" }}>
-      {displayTime}
-    </Typography>
+    <>
+      <Typography variant="body1" style={{ fontSize: "50px" }}>
+        {displayTime}
+      </Typography>
+      <Typography>
+        Round {currentRound} of {rounds}
+      </Typography>
+    </>
   );
 };
 

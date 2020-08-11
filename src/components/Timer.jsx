@@ -10,6 +10,8 @@ const Timer = ({
   longBreakDuration,
   workMessage,
   breakMessage,
+  currentRound,
+  setCurrentRound,
 }) => {
   const [timeRemaining, setTimeRemaining] = useState(workDuration);
   const intervalID = useRef(null);
@@ -39,7 +41,11 @@ const Timer = ({
 
   return (
     <Container style={{ position: "absolute", top: "40vh" }}>
-      <TimerDisplay timeRemaining={timeRemaining} />
+      <TimerDisplay
+        timeRemaining={timeRemaining}
+        currentRound={currentRound}
+        rounds={rounds}
+      />
       <TimerControl
         startTimer={startTimer}
         stopTimer={stopTimer}
