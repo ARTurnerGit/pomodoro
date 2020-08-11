@@ -8,7 +8,11 @@ const TimerDisplay = ({ timeRemaining }) => {
       : `0:${timeRemaining.toString().padStart(2, "0")}`;
 
   useEffect(() => {
-    document.title = `${displayTime} to go`;
+    if (displayTime.includes(":")) {
+      document.title = `${displayTime} to go`;
+    } else {
+      document.title = `${displayTime} mins to go`;
+    }
   }, [displayTime]);
 
   return (
