@@ -6,7 +6,7 @@ import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 
 function App() {
-  // state for settings, contains the defaults
+  // state for settings, this contains the defaults
   const [workDuration, setWorkDuration] = useState(25 * 60);
   const [rounds, setRounds] = useState(5);
   const [shortBreakDuration, setShortBreakDuration] = useState(5 * 60);
