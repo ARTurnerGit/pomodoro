@@ -17,22 +17,24 @@ const TimerDisplay = ({
 
   useEffect(() => {
     if (displayTime.includes(":")) {
-      document.title = `${displayTime} to go`;
+      document.title = `${
+        isWork ? workMessage : breakMessage
+      } | ${displayTime} to go`;
     } else {
-      document.title = `${displayTime} mins to go`;
+      document.title = `${
+        isWork ? workMessage : breakMessage
+      } | ${displayTime} mins to go`;
     }
-  }, [displayTime]);
+  });
 
   return (
     <>
+      <Typography>{isWork ? workMessage : breakMessage}</Typography>
       <Typography variant="body1" style={{ fontSize: "50px" }}>
         {!intervalID && displayTime}
       </Typography>
       <Typography>
         Round {currentRound} of {rounds}
-      </Typography>
-      <Typography>
-        {intervalID && (isWork ? workMessage : breakMessage)}
       </Typography>
     </>
   );

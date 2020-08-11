@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container } from "@material-ui/core";
@@ -19,6 +19,8 @@ const Timer = ({
   isWork,
   setIsWork,
 }) => {
+  const audioRef = useRef(null);
+
   const startTimer = () => {
     const currentIntervalID = setInterval(
       () => setTimeRemaining((time) => time - 1),
@@ -34,7 +36,7 @@ const Timer = ({
 
   const resetTimer = () => {
     stopTimer();
-    setTimeRemaining(isWork ? workDuration : shortBreakDuration);
+    setTimeRemaining(isWork ? 10 : 5); // this is just for testing, should be work/break durations
   };
 
   const nextRound = () => {
@@ -50,7 +52,9 @@ const Timer = ({
 
   useEffect(() => {
     if (timeRemaining === 0) {
+      console.log("firing the end of timer effect");
       stopTimer();
+      audioRef.current.play();
     }
   });
 
@@ -71,6 +75,11 @@ const Timer = ({
         resetTimer={resetTimer}
         nextRound={nextRound}
         intervalID={intervalID}
+      />
+      <audio
+        preload="auto"
+        src={`${process.env.PUBLIC_URL}/assets/bell_sound.wav`}
+        ref={audioRef}
       />
     </Container>
   );
