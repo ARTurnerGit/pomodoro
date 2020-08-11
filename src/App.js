@@ -20,7 +20,16 @@ function App() {
       </header>
       <main>
         <Router>
-          <Timer path="/timer" default />
+          <Timer
+            path="/timer"
+            workDuration={workDuration}
+            rounds={rounds}
+            shortBreakDuration={shortBreakDuration}
+            longBreakDuration={longBreakDuration}
+            workMessage={workMessage}
+            breakMessage={breakMessage}
+            default
+          />
           <Settings
             path="/settings"
             workDuration={workDuration}

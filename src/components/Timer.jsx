@@ -3,13 +3,16 @@ import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container } from "@material-ui/core";
 
-const Timer = () => {
-  const [timeRemaining, setTimeRemaining] = useState(5);
+const Timer = ({
+  workDuration,
+  rounds,
+  shortBreakDuration,
+  longBreakDuration,
+  workMessage,
+  breakMessage,
+}) => {
+  const [timeRemaining, setTimeRemaining] = useState(workDuration);
   const intervalID = useRef(null);
-
-  useEffect(() => {
-    document.title = `${timeRemaining} to go`;
-  }, [timeRemaining]);
 
   useEffect(() => {
     if (timeRemaining === 0) {
