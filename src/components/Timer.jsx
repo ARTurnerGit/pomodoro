@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container } from "@material-ui/core";
@@ -12,8 +12,10 @@ const Timer = ({
   breakMessage,
   currentRound,
   setCurrentRound,
+  timeRemaining,
+  setTimeRemaining,
 }) => {
-  const [timeRemaining, setTimeRemaining] = useState(workDuration);
+  // const [timeRemaining, setTimeRemaining] = useState(workDuration);
   const intervalID = useRef(null);
 
   useEffect(() => {

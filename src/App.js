@@ -6,12 +6,16 @@ import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 
 function App() {
+  // state for settings, contains the defaults
   const [workDuration, setWorkDuration] = useState(25 * 60);
   const [rounds, setRounds] = useState(5);
   const [shortBreakDuration, setShortBreakDuration] = useState(5 * 60);
   const [longBreakDuration, setLongBreakDuration] = useState(20 * 60);
   const [workMessage, setWorkMessage] = useState("Work");
   const [breakMessage, setBreakMessage] = useState("Break");
+
+  // state for functional logic
+  const [timeRemaining, setTimeRemaining] = useState(workDuration);
   const [currentRound, setCurrentRound] = useState(0);
 
   return (
@@ -31,6 +35,8 @@ function App() {
             breakMessage={breakMessage}
             currentRound={currentRound}
             setCurrentRound={setCurrentRound}
+            timeRemaining={timeRemaining}
+            setTimeRemaining={setTimeRemaining}
             default
           />
           <Settings
