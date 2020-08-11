@@ -16,6 +16,8 @@ const Timer = ({
   setTimeRemaining,
   intervalID,
   setIntervalID,
+  isWork,
+  setIsWork,
 }) => {
   const startTimer = () => {
     const currentIntervalID = setInterval(
