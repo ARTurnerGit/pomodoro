@@ -12,29 +12,25 @@ const TimerDisplay = ({
 }) => {
   const displayTime =
     timeRemaining >= 60
-      ? Math.floor(timeRemaining / 60).toString()
+      ? `${Math.floor(timeRemaining / 60).toString()} mins`
       : `0:${timeRemaining.toString().padStart(2, "0")}`;
 
   useEffect(() => {
-    if (displayTime.includes(":")) {
-      document.title = `${
-        isWork ? workMessage : breakMessage
-      } | ${displayTime} to go`;
-    } else {
-      document.title = `${
-        isWork ? workMessage : breakMessage
-      } | ${displayTime} mins to go`;
-    }
+    document.title = `${
+      isWork ? workMessage : breakMessage
+    } | ${displayTime} to go`;
   });
 
   return (
     <>
       <Typography>{isWork ? workMessage : breakMessage}</Typography>
       <Typography variant="body1" style={{ fontSize: "50px" }}>
-        {!intervalID && displayTime}
+        {displayTime}
       </Typography>
       <Typography>
-        Round {currentRound} of {rounds}
+        {currentRound <= rounds
+          ? `Round ${currentRound} of ${rounds}`
+          : "Rounds complete"}
       </Typography>
     </>
   );

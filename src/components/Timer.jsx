@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
-import { Container } from "@material-ui/core";
+import { Container, Switch, FormControlLabel } from "@material-ui/core";
 
 const Timer = ({
   workDuration,
@@ -52,7 +52,6 @@ const Timer = ({
 
   useEffect(() => {
     if (timeRemaining === 0) {
-      console.log("firing the end of timer effect");
       stopTimer();
       audioRef.current.play();
     }
@@ -80,6 +79,10 @@ const Timer = ({
         preload="auto"
         src={`${process.env.PUBLIC_URL}/assets/bell_sound.wav`}
         ref={audioRef}
+      />
+      <FormControlLabel
+        control={<Switch color="primary" />}
+        label="autostart rounds"
       />
     </Container>
   );
