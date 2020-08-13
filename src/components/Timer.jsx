@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import TimerDisplay from "./TimerDisplay";
 import TimerControl from "./TimerControl";
 import { Container, Switch, FormControlLabel } from "@material-ui/core";
@@ -18,20 +18,15 @@ const Timer = ({
   setIntervalID,
   isWork,
   setIsWork,
+  stopTimer,
+  displayTime,
 }) => {
-  const audioRef = useRef(null);
-
   const startTimer = () => {
     const currentIntervalID = setInterval(
       () => setTimeRemaining((time) => time - 1),
       1000
     );
     setIntervalID(currentIntervalID);
-  };
-
-  const stopTimer = () => {
-    clearInterval(intervalID);
-    setIntervalID(null);
   };
 
   const resetTimer = () => {
@@ -50,13 +45,6 @@ const Timer = ({
     setIsWork((bool) => !bool);
   };
 
-  useEffect(() => {
-    if (timeRemaining === 0) {
-      stopTimer();
-      audioRef.current.play();
-    }
-  });
-
   return (
     <Container style={{ position: "absolute", top: "40vh" }}>
       <TimerDisplay
@@ -74,11 +62,6 @@ const Timer = ({
         resetTimer={resetTimer}
         nextRound={nextRound}
         intervalID={intervalID}
-      />
-      <audio
-        preload="auto"
-        src={`${process.env.PUBLIC_URL}/assets/bell_sound.wav`}
-        ref={audioRef}
       />
       <FormControlLabel
         control={<Switch color="primary" />}

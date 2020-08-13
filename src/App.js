@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { Router } from "@reach/router";
 import Banner from "./components/Banner";
@@ -7,10 +7,10 @@ import Settings from "./components/Settings";
 
 function App() {
   // state for settings, this contains the defaults
-  const [workDuration, setWorkDuration] = useState(25 * 60);
+  const [workDuration, setWorkDuration] = useState(5); //25 min
   const [rounds, setRounds] = useState(5);
-  const [shortBreakDuration, setShortBreakDuration] = useState(5 * 60);
-  const [longBreakDuration, setLongBreakDuration] = useState(20 * 60);
+  const [shortBreakDuration, setShortBreakDuration] = useState(2); //5 min
+  const [longBreakDuration, setLongBreakDuration] = useState(10); //20 min
   const [workMessage, setWorkMessage] = useState("Work");
   const [breakMessage, setBreakMessage] = useState("Break");
 
@@ -19,6 +19,20 @@ function App() {
   const [intervalID, setIntervalID] = useState(null);
   const [currentRound, setCurrentRound] = useState(1);
   const [isWork, setIsWork] = useState(true);
+
+  const audioRef = useRef(null);
+
+  const stopTimer = () => {
+    clearInterval(intervalID);
+    setIntervalID(null);
+  };
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      stopTimer();
+      audioRef.current.play();
+    }
+  });
 
   return (
     <div className="App">
@@ -43,7 +57,7 @@ function App() {
             setIntervalID={setIntervalID}
             isWork={isWork}
             setIsWork={setIsWork}
-            default
+            stopTimer={stopTimer}
           />
           <Settings
             path="/settings"
@@ -61,6 +75,11 @@ function App() {
             setBreakMessage={setBreakMessage}
           />
         </Router>
+        <audio
+          preload="auto"
+          src={`${process.env.PUBLIC_URL}/assets/bell_sound.wav`}
+          ref={audioRef}
+        />
       </main>
     </div>
   );
